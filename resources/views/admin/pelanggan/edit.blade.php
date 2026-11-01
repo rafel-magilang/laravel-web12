@@ -376,7 +376,7 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item"><a href="#">Pelanggan</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Tambah Pelanggan</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Pelanggan</li>
                 </ol>
             </nav>
             <div class="d-flex justify-content-between w-100 flex-wrap">
