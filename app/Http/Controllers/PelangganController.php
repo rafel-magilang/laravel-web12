@@ -30,7 +30,7 @@ class PelangganController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        
+
         $data['firstname'] = $request->firstname;
         $data['lastname']  = $request->lastname;
         $data['birthday']  = $request->birthday;
@@ -55,7 +55,8 @@ class PelangganController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data['pelanggan'] = Pelanggan::findOrFail($id);
+        return view('admin.pelanggan.edit', $data);
     }
 
     /**
@@ -63,7 +64,18 @@ class PelangganController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $pelanggan_id = $id;
+        $pelanggan = Pelanggan::findOrFail($pelanggan_id);
+
+        $pelanggan->firstname = $request->firstname;
+        $pelanggan->lastname = $request->lastname;
+        $pelanggan->birthday = $request->birthday;
+        $pelanggan->gender = $request->gender;
+        $pelanggan->email = $request->email;
+        $pelanggan->phone = $request->phone;
+
+        $pelanggan->save();
+        return redirect()->route('pelanggan.index')->with('success', 'Data berhasil diperbarui');
     }
 
     /**
