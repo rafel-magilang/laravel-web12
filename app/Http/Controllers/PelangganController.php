@@ -30,6 +30,14 @@ class PelangganController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        $request->validate([
+            'firstname' => 'required',
+            'lastname'  => 'required',
+            'birthday'  => 'required|date',
+            'gender'    => 'required|in:Male,Female',
+            'email'     => 'required|email',
+            'phone'     => 'required|numeric'
+        ]);
 
         $data['firstname'] = $request->firstname;
         $data['lastname']  = $request->lastname;
@@ -64,6 +72,15 @@ class PelangganController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'firstname' => 'required',
+            'lastname'  => 'required',
+            'birthday'  => 'required|date',
+            'gender'    => 'required|in:Male,Female',
+            'email'     => 'required|email',
+            'phone'     => 'required|numeric'
+        ]);
+
         $pelanggan_id = $id;
         $pelanggan = Pelanggan::findOrFail($pelanggan_id);
 
@@ -85,6 +102,6 @@ class PelangganController extends Controller
     {
         $pelanggan = Pelanggan::findOrFail($id);
         $pelanggan->delete();
-        return redirect()->route('pelanggan.index')->with('success', 'Data berhasil dihapus');  
+        return redirect()->route('pelanggan.index')->with('success', 'Data berhasil dihapus');
     }
 }

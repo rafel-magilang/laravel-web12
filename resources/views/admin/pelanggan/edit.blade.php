@@ -400,66 +400,114 @@
                             @method('PUT')
                             <div class="row mb-4">
                                 <div class="col-lg-4 col-sm-6">
+
                                     <!-- First Name -->
                                     <div class="mb-3">
                                         <label for="firstname" class="form-label">First name</label>
-                                        <input type="text" id="firstname" class="form-control" name="firstname"
-                                            value="{{ $pelanggan->firstname }}" required>
+                                        <input type="text" id="firstname"
+                                            class="form-control @error('firstname') is-invalid @enderror"
+                                            name="firstname" value="{{ old('firstname', $pelanggan->firstname) }}"
+                                            required>
+
+                                        @error('firstname')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <!-- Last Name -->
                                     <div class="mb-3">
                                         <label for="lastname" class="form-label">Last name</label>
-                                        <input type="text" id="lastname" class="form-control" name="lastname"
-                                            value="{{ $pelanggan->lastname }}" required>
+                                        <input type="text" id="lastname"
+                                            class="form-control @error('lastname') is-invalid @enderror"
+                                            name="lastname" value="{{ old('lastname', $pelanggan->lastname) }}"
+                                            required>
+
+                                        @error('lastname')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
+
                                 </div>
 
                                 <div class="col-lg-4 col-sm-6">
+
                                     <!-- Birthday -->
                                     <div class="mb-3">
                                         <label for="birthday" class="form-label">Birthday</label>
-                                        <input type="date" id="birthday" class="form-control" name="birthday" value="{{ $pelanggan->birthday }}" required>
+                                        <input type="date" id="birthday"
+                                            class="form-control @error('birthday') is-invalid @enderror"
+                                            name="birthday" value="{{ old('birthday', $pelanggan->birthday) }}"
+                                            required>
+
+                                        @error('birthday')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <!-- Gender -->
                                     <div class="mb-3">
                                         <label for="gender" class="form-label">Gender</label>
-                                        <select class="form-select mb-0" id="gender" name="gender" aria-label="Gender select example">
-                                            <option selected>-- Gender --</option>
-                                            <option value="Female" {{ $pelanggan->gender == 'Female' ? 'selected' : '' }}>Female</option>
-                                            <option value="Male" {{ $pelanggan->gender == 'Male' ? 'selected' : '' }}>Male</option>
+                                        <select id="gender" name="gender"
+                                            class="form-select @error('gender') is-invalid @enderror">
+
+                                            <option value="">-- Gender --</option>
+                                            <option value="Female"
+                                                {{ old('gender', $pelanggan->gender) == 'Female' ? 'selected' : '' }}>
+                                                Female</option>
+                                            <option value="Male"
+                                                {{ old('gender', $pelanggan->gender) == 'Male' ? 'selected' : '' }}>
+                                                Male</option>
                                         </select>
+
+                                        @error('gender')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
+
                                 </div>
 
                                 <div class="col-lg-4 col-sm-12">
+
                                     <!-- Email -->
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="text" id="email" class="form-control" name="email" value="{{ $pelanggan->email }}"
-                                            required>
+                                        <input type="text" id="email"
+                                            class="form-control @error('email') is-invalid @enderror" name="email"
+                                            value="{{ old('email', $pelanggan->email) }}" required>
+
+                                        @error('email')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <!-- Phone -->
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">Phone</label>
-                                        <input type="text" id="phone" class="form-control" name="phone" value="{{ $pelanggan->phone }}" required>
+                                        <input type="text" id="phone"
+                                            class="form-control @error('phone') is-invalid @enderror" name="phone"
+                                            value="{{ old('phone', $pelanggan->phone) }}" required>
+
+                                        @error('phone')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
-                                    <!-- Buttons -->
-                                    <div class="">
-                                        <button type="submit" class="btn btn-primary btn-info">Simpan Perubahan</button>
-                                        <a href="{{ route('pelanggan.index') }}"
-                                            class="btn btn-outline-secondary ms-2">Batal</a>
-                                    </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
 
+                            <!-- Buttons -->
+                            <div class="">
+                                <button type="submit" class="btn btn-primary btn-info">Simpan Perubahan</button>
+                                <a href="{{ route('pelanggan.index') }}"
+                                    class="btn btn-outline-secondary ms-2">Batal</a>
+                            </div>
+                    </div>
                 </div>
+                </form>
             </div>
+
+        </div>
+        </div>
         </div>
 
         <footer class="bg-white rounded shadow p-5 mb-4 mt-4">

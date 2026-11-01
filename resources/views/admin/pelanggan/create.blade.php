@@ -402,15 +402,27 @@
                                     <!-- First Name -->
                                     <div class="mb-3">
                                         <label for="firstname" class="form-label">First name</label>
-                                        <input type="text" id="firstname" class="form-control" name="firstname"
-                                            required>
+                                        <input type="text" id="firstname"
+                                            class="form-control @error('firstname') is-invalid @enderror"
+                                            name="firstname" value="{{ old('firstname') }}" required>
+                                        @error('firstname')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
 
                                     <!-- Last Name -->
                                     <div class="mb-3">
                                         <label for="lastname" class="form-label">Last name</label>
-                                        <input type="text" id="lastname" class="form-control" name="lastname"
-                                            required>
+                                        <input type="text" id="lastname"
+                                            class="form-control @error('lastname') is-invalid @enderror"
+                                            name="lastname" value="{{ old('lastname') }}" required>
+                                        @error('lastname')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -418,18 +430,34 @@
                                     <!-- Birthday -->
                                     <div class="mb-3">
                                         <label for="birthday" class="form-label">Birthday</label>
-                                        <input type="date" id="birthday" class="form-control" name="birthday">
+                                        <input type="date" id="birthday"
+                                            class="form-control @error('birthday') is-invalid @enderror"
+                                            name="birthday" value="{{ old('birthday') }}" required>
+                                        @error('birthday')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
 
                                     <!-- Gender -->
                                     <div class="mb-3">
                                         <label for="gender" class="form-label">Gender</label>
-                                        <select id="gender" name="gender" class="form-select">
+                                        <select id="gender" name="gender"
+                                            class="form-select @error('gender') is-invalid @enderror">
                                             <option value="">-- Pilih --</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                            <option value="Other">Other</option>
+                                            <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>
+                                                Male
+                                            </option>
+                                            <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>
+                                                Female
+                                            </option>
                                         </select>
+                                        @error('gender')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -437,14 +465,27 @@
                                     <!-- Email -->
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="text" id="email" class="form-control" name="email"
-                                            required>
+                                        <input type="text" id="email"
+                                            class="form-control @error('email') is-invalid @enderror" name="email"
+                                            value="{{ old('email') }}" required>
+                                        @error('email')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
 
                                     <!-- Phone -->
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">Phone</label>
-                                        <input type="text" id="phone" class="form-control" name="phone">
+                                        <input type="text" id="phone"
+                                            class="form-control @error('phone') is-invalid @enderror" name="phone"
+                                            value="{{ old('phone') }}">
+                                        @error('phone')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
 
                                     <!-- Buttons -->
